@@ -1,0 +1,11 @@
+#!/bin/bash
+set -euo pipefail
+resources="$(cd "$(dirname "$0")/../Resources" && pwd)"
+exec /usr/bin/osascript - "$resources/start.command" <<'APPLESCRIPT'
+on run argv
+    tell application "Terminal"
+        activate
+        do script quoted form of (item 1 of argv)
+    end tell
+end run
+APPLESCRIPT

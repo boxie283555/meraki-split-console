@@ -6,6 +6,8 @@
 
 ## 安装入口
 
+**Mac 安装包：** 在 [GitHub Releases](https://github.com/boxie283555/meraki-split-console/releases) 下载 `.pkg`，安装后从“应用程序”启动。详见 [安装包说明](docs/Mac安装包.md)。仍需 Docker Desktop 或 Colima，首次运行需联网构建。
+
 第一次使用请按 **[Mac 完整安装指南](docs/安装指南.md)** 操作，包含Docker准备、代码下载、配置、首次登录、Mac双击入口、升级、数据备份和常见问题。
 
 已有Docker环境的快速安装：

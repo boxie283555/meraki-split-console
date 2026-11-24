@@ -15,3 +15,5 @@ backups/
 .git/
 .github/
 tests/
+dist/
+packaging/
