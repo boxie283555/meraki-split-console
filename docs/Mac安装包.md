@@ -2,7 +2,7 @@
 
 ## 安装和打开
 
-1. 从本项目 GitHub Releases 下载 `Meraki-Console-1.0.0.pkg`。
+1. 从本项目 GitHub Releases 下载 `Meraki-Console-1.1.0.pkg`。
 2. 双击安装，程序安装到 `/Applications/Meraki Console.app`。
 3. 先安装并启动 Docker Desktop，或准备好 Colima、Docker 和 Docker Compose。
 4. 在“应用程序”打开 Meraki Console；首次启动会打开终端和配置文件，填写组织ID及网络名称、保存后按回车。
@@ -30,9 +30,9 @@
 在macOS且已安装命令行工具的环境执行：
 
 ```bash
-python3 scripts/build-mac-pkg.py --version 1.0.0
-pkgutil --check-signature dist/Meraki-Console-1.0.0.pkg
-shasum -a 256 dist/Meraki-Console-1.0.0.pkg
+python3 scripts/build-mac-pkg.py --version 1.1.0
+pkgutil --check-signature dist/Meraki-Console-1.1.0.pkg
+shasum -a 256 dist/Meraki-Console-1.1.0.pkg
 ```
 
 `pkgutil`会报告包未签名，这是当前发布方式。包内文件采用明确允许列表，不打包工作目录中的`.env`、密钥、运行数据或Git历史。

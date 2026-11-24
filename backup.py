@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import sites
 import re
 import tarfile
 import time
@@ -59,7 +60,7 @@ def _capture(cfg,root,reason):
         key=keypath.read_text().strip()
         org=quote(str(cfg['organization_id']),safe='')
         networks=fetch('/organizations/'+org+'/networks',key)
-        targets=[n for n in networks if n['name']==cfg['network_name']]
+        targets=[n for n in networks if sites.matches(n,cfg)]
         if len(targets)!=1:raise ValueError('Network name not unique')
         network=targets[0];nid=network['id'];manifest['network_id']=nid;manifest['network_name']=network['name'];manifest['organization_id']=org
         products=set(network.get('productTypes',[]));saved={}

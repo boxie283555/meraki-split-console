@@ -11,3 +11,5 @@
 .diff-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:20px}.diff-banner button{white-space:nowrap}
 
 textarea{display:block;width:100%;background:#0e1520;color:var(--text);border:1px solid var(--border);border-radius:8px;padding:12px;font:inherit;resize:vertical}#dnsList code{overflow-wrap:anywhere}aside .nav-label{margin-top:25px}
+
+#siteSelect{max-width:100%;padding:9px;border-radius:8px;background:var(--panel);color:var(--text);border:1px solid var(--border)}#siteTarget{margin-top:6px}.breadcrumb label{margin:0 0 4px}#sites .panel,#account .panel{margin-bottom:20px}

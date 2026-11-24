@@ -8,6 +8,7 @@ import ipaddress
 import json
 import os
 from pathlib import Path
+import sites
 import tempfile
 import urllib.error
 import urllib.parse
@@ -127,7 +128,7 @@ def run(config, root):
         key = key_path.read_text().strip()
         org = urllib.parse.quote(str(config['organization_id']), safe='')
         networks = pages('/organizations/' + org + '/networks?perPage=1000', key)
-        matches = [n for n in networks if n['name'] == config['network_name']]
+        matches = [n for n in networks if sites.matches(n,config)]
         if len(matches) != 1:
             raise ValueError('Target network name must match exactly one network')
         network = matches[0]

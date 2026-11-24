@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """LAN HTTPS console for the read-only preview worker."""
 import argparse
+import contextvars
+import sites
 import datetime as dt
 import hashlib
 import hmac
@@ -26,6 +28,10 @@ PRIVATE = Path(os.environ.get('APP_PRIVATE', str(Path.home() / '.config/meraki-s
 SESSIONS = {}
 ATTEMPTS = {}
 LOCK = threading.Lock()
+REQUEST_SITE = contextvars.ContextVar("request_site", default="default")
+
+def config():
+    return sites.get(REQUEST_SITE.get())
 
 
 def read(path, default=None):
@@ -36,9 +42,9 @@ def read(path, default=None):
 
 
 def command(*args):
-    if os.environ.get('CONTAINER_RUNTIME') == '1':
+    if os.environ.get('CONTAINER_RUNTIME') == '1' or (REQUEST_SITE.get() != 'default' and not any('smartdns' in arg for arg in args)):
         from runtime import jobs
-        return jobs.command(*args)
+        return jobs.command(*args, site=REQUEST_SITE.get())
     return subprocess.run(['systemctl', '--user', *args], capture_output=True,
                           text=True, timeout=10)
 
@@ -71,7 +77,7 @@ def latest_snapshot(root, latest):
 
 
 def state():
-    cfg = read(Path(os.environ.get('APP_CONFIG', str(BASE / 'config.json'))))
+    cfg = config()
     root = Path(cfg['state_dir']).expanduser()
     latest = read(root / 'latest.json')
     status = read(root / 'status.json')
@@ -85,7 +91,7 @@ def state():
     props = command('show', 'meraki-split-preview.service', '-p', 'ActiveState', '-p', 'SubState').stdout
     timer = command('show', 'meraki-split-preview.timer', '-p', 'NextElapseUSecRealtime', '-p', 'ActiveState').stdout
     key = Path(cfg['api_key_file']).expanduser()
-    return {'latest': latest, 'status': status, 'history': history,
+    return {'site_id': REQUEST_SITE.get(), 'sites': sites.listing(), 'latest': latest, 'status': status, 'history': history,
             'running': 'ActiveState=activating' in props or 'ActiveState=active\n' in props,
             'timer': timer, 'api_key_configured': key.exists() and key.stat().st_size > 0,
             'organization_id': cfg['organization_id'], 'network_name': cfg['network_name'],
@@ -150,6 +156,12 @@ class Handler(BaseHTTPRequestHandler):
         _, session = self.session()
         if not session:
             return self.reply(401, {'error': '请先登录'})
+        try:
+            site = self.headers.get('X-Site-ID') or parse_qs(urlsplit(self.path).query).get('site', ['default'])[0]
+            sites.get(site)
+            REQUEST_SITE.set(site)
+        except ValueError as exc:
+            return self.reply(400, {'error': str(exc)})
         if path == '/api/state':
             try:
                 obj = state()
@@ -167,7 +179,7 @@ class Handler(BaseHTTPRequestHandler):
             file = smartdns_manager.ROOT / 'current/china-domains.txt'
             return self.reply(200, file.read_bytes(), 'text/plain; charset=utf-8') if file.exists() else self.reply(404, {'error': '尚无域名列表'})
         if path == '/api/backup.tar.gz':
-            cfg = read(Path(os.environ.get('APP_CONFIG', str(BASE / 'config.json'))))
+            cfg = config()
             root = Path(cfg['state_dir']).expanduser() / 'backups'
             manifest = read(root / 'latest.json')
             name = manifest.get('id', '')
@@ -180,12 +192,12 @@ class Handler(BaseHTTPRequestHandler):
         if path == '/api/restore-guide':
             return self.reply(200, (BASE / 'RESTORE.md').read_bytes(), 'text/plain; charset=utf-8')
         if path == '/api/meraki-snapshot.json':
-            cfg = read(Path(os.environ.get('APP_CONFIG', str(BASE / 'config.json'))))
+            cfg = config()
             root = Path(cfg['state_dir']).expanduser()
             snapshot = latest_snapshot(root, read(root / 'latest.json'))
             return self.reply(200, snapshot) if snapshot is not None else self.reply(404, {'error': '尚无可用 Meraki 快照'})
         if path == '/api/prefixes.txt':
-            cfg = read(Path(os.environ.get('APP_CONFIG', str(BASE / 'config.json'))))
+            cfg = config()
             latest = read(Path(cfg['state_dir']).expanduser() / 'latest.json')
             return self.reply(200, ('\n'.join(latest.get('china_prefixes', [])) + '\n').encode(), 'text/plain; charset=utf-8')
         return self.reply(404, {'error': 'Not found'})
@@ -223,6 +235,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self.reply(401, {'error': '账号或密码错误'})
             token, csrf = secrets.token_urlsafe(32), secrets.token_urlsafe(32)
             with LOCK:
+                if read(PRIVATE/'gui-auth.json').get('hash') != auth['hash']:
+                    return self.reply(401, {'error':'密码已更新，请重新登录'})
                 for k in list(SESSIONS):
                     if SESSIONS[k]['expires'] <= now:
                         del SESSIONS[k]
@@ -235,6 +249,36 @@ class Handler(BaseHTTPRequestHandler):
             return self.reply(401, {'error': '请先登录'})
         if not hmac.compare_digest(self.headers.get('X-CSRF-Token', ''), session['csrf']):
             return self.reply(403, {'error': '安全校验失败，请重新登录'})
+        if path == '/api/password':
+            old = obj.get('current_password', '')
+            new = obj.get('new_password', '')
+            if not isinstance(old, str) or len(old)>1024 or not isinstance(new, str) or not 12<=len(new)<=128 or new!=obj.get('confirm_password'):
+                return self.reply(400, {'error': '新密码须为12～128个字符，且两次输入一致'})
+            with LOCK:
+                ratekey='password:'+self.client_address[0]
+                now=time.time();recent=[t for t in ATTEMPTS.get(ratekey,[]) if now-t<300]
+                if len(recent)>=5:return self.reply(429, {'error':'改密尝试过多，请五分钟后重试'})
+                ATTEMPTS[ratekey]=recent+[now]
+                auth=read(PRIVATE/'gui-auth.json')
+                if not hmac.compare_digest(password_hash(old,auth['salt']),auth['hash']):
+                    return self.reply(400, {'error':'当前密码不正确'})
+                if old==new:return self.reply(400, {'error':'新密码不能与当前密码相同'})
+                salt=secrets.token_hex(16)
+                atomic(PRIVATE/'gui-auth.json',json.dumps({'username':auth['username'],'salt':salt,'hash':password_hash(new,salt)}))
+                (PRIVATE/'gui-initial-password').unlink(missing_ok=True)
+                SESSIONS.clear();ATTEMPTS.pop(ratekey,None)
+            return self.reply(200, {'message':'密码已更新，所有会话已退出，请用新密码登录'}, cookie='session=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0')
+        if path == '/api/sites':
+            try:
+                site=sites.create(obj)
+                return self.reply(201, {'id':site,'message':'站点已添加；请先刷新并核对目标，再创建下发计划'})
+            except ValueError as exc:
+                return self.reply(400, {'error':str(exc)})
+        try:
+            site=self.headers.get('X-Site-ID') or parse_qs(urlsplit(self.path).query).get('site',['default'])[0]
+            sites.get(site);REQUEST_SITE.set(site)
+        except ValueError as exc:
+            return self.reply(400, {'error':str(exc)})
         if path == '/api/logout':
             with LOCK:
                 SESSIONS.pop(token, None)
@@ -255,7 +299,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.reply(500, {'error': '域名更新服务启动失败'})
             return self.reply(202, {'message': '域名更新已启动，验证成功后加载到 SmartDNS；不会修改 Meraki'})
         if path in ('/api/deploy-plan', '/api/deploy-apply', '/api/deploy-auto'):
-            cfg = read(Path(os.environ.get('APP_CONFIG', str(BASE / 'config.json'))))
+            cfg = config()
             try:
                 if path == '/api/deploy-plan':
                     return self.reply(200, deploy.plan(cfg))
@@ -298,7 +342,7 @@ class Handler(BaseHTTPRequestHandler):
             key = obj.get('key', '')
             if not isinstance(key, str) or not 20 <= len(key) <= 512 or not key.isascii() or any(c.isspace() for c in key):
                 return self.reply(400, {'error': 'API Key 格式不正确'})
-            cfg = read(Path(os.environ.get('APP_CONFIG', str(BASE / 'config.json'))))
+            cfg = config()
             atomic(Path(cfg['api_key_file']).expanduser(), key)
         elif path != '/api/refresh':
             return self.reply(404, {'error': 'Not found'})
@@ -329,9 +373,8 @@ def main():
         ctx.minimum_version = ssl.TLSVersion.TLSv1_2
         ctx.load_cert_chain(PRIVATE / 'gui-cert.pem', PRIVATE / 'gui-key.pem')
         server.socket = ctx.wrap_socket(server.socket, server_side=True)
-    if os.environ.get("CONTAINER_RUNTIME") == "1":
-        from runtime import jobs
-        jobs.start_scheduler()
+    from runtime import jobs
+    jobs.start_scheduler()
     server.serve_forever()
 
 

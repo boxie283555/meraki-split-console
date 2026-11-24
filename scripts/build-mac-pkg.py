@@ -3,14 +3,14 @@
 import argparse,hashlib,plistlib,shutil,subprocess,tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('--version',default='1.0.0');args=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--version',default='1.1.0');args=p.parse_args()
 if not all(c.isdigit() or c=='.' for c in args.version):p.error('Version must be numeric dotted format')
 out=ROOT/'dist';out.mkdir(exist_ok=True)
 with tempfile.TemporaryDirectory(prefix='meraki-pkg-') as tmp:
  tmp=Path(tmp);payload=tmp/'payload';app=payload/'Applications/Meraki Console.app'
  resources=app/'Contents/Resources';mac=app/'Contents/MacOS';project=resources/'project'
  project.mkdir(parents=True);mac.mkdir(parents=True)
- names=['Dockerfile','compose.yaml','compose.dns.yaml','.env.example','.dockerignore','README.md','RESTORE.md','backup-catalog.json','config.example.json','gui.py','runtime.py','bootstrap.py','preview.py','backup.py','deploy.py','lookup.py','smartdns_manager.py','dns_isolation.py']
+ names=['Dockerfile','compose.yaml','compose.dns.yaml','.env.example','.dockerignore','README.md','RESTORE.md','backup-catalog.json','config.example.json','gui.py','sites.py','runtime.py','bootstrap.py','preview.py','backup.py','deploy.py','lookup.py','smartdns_manager.py','dns_isolation.py']
  for name in names:shutil.copy2(ROOT/name,project/name)
  for name in ['web','docs']:shutil.copytree(ROOT/name,project/name,ignore=shutil.ignore_patterns('._*','.DS_Store','__pycache__'))
  shutil.copy2(ROOT/'packaging/macos/launch',mac/'launch')

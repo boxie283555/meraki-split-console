@@ -2,6 +2,7 @@
 """Owned-rule reconciliation with fresh backup, WAL and read-after-write checks."""
 import argparse, collections, copy, datetime as dt, fcntl, hashlib, ipaddress, json, os
 from pathlib import Path
+import sites
 import secrets, time, tarfile, urllib.request, urllib.error
 from urllib.parse import urlencode
 import backup
@@ -29,7 +30,7 @@ def credentials(cfg):
  return p.read_text().strip()
 def live(cfg,key):
  nets=backup.fetch('/organizations/'+str(cfg['organization_id'])+'/networks',key)
- targets=[n for n in nets if n['name']==cfg['network_name']]
+ targets=[n for n in nets if sites.matches(n,cfg)]
  if len(targets)!=1:raise ValueError('目标网络必须唯一')
  nid=targets[0]['id'];q=urlencode({'networkIds[]':nid})
  data=backup.fetch('/organizations/'+str(cfg['organization_id'])+'/appliance/trafficShaping/vpnExclusions/byNetwork?'+q,key)
