@@ -4,6 +4,23 @@
 
 本版本提供 Mac 双击启动入口，界面运行于本机浏览器；不是原生 Swift App。iPhone App 暂不开发。Docker 容器中不需要 systemd，不挂载宿主机 Docker socket，不修改原有服务器或路由器。
 
+## 安装后如何登录（默认账号与初始密码）
+
+| 项目 | 内容 |
+| --- | --- |
+| 登录地址 | https://localhost:8443 |
+| 默认用户名 | `admin` |
+| 初始密码 | 首次启动时自动生成，每个新数据卷独立；没有统一的固定密码 |
+| 在哪里看密码 | 双击 Meraki Console 启动后，终端窗口会显示初始密码 |
+
+如果已关闭启动窗口，在 Mac 的“终端”中执行下面命令即可再次查看（无需切换目录，应用容器需正在运行）：
+
+```bash
+docker exec meraki-split-console-console-1 cat /data/private/gui-initial-password
+```
+
+复制命令输出的密码登录，然后进入 **“管理员密码”** 修改为自己的密码。改密后初始密码文件会自动删除，此后使用修改后的密码；升级或重装应用且保留原数据卷时，仍使用原密码。
+
 ## 安装入口
 
 **Mac 安装包：** 在 [GitHub Releases](https://github.com/boxie283555/meraki-split-console/releases) 下载 `.pkg`，安装后从“应用程序”启动。详见 [安装包说明](docs/Mac安装包.md)。仍需 Docker Desktop 或 Colima，首次运行需联网构建。
