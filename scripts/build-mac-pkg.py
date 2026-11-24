@@ -3,7 +3,7 @@
 import argparse,hashlib,plistlib,shutil,subprocess,tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('--version',default='1.1.0');args=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--version',default='1.1.1');args=p.parse_args()
 if not all(c.isdigit() or c=='.' for c in args.version):p.error('Version must be numeric dotted format')
 out=ROOT/'dist';out.mkdir(exist_ok=True)
 with tempfile.TemporaryDirectory(prefix='meraki-pkg-') as tmp:
@@ -16,7 +16,8 @@ with tempfile.TemporaryDirectory(prefix='meraki-pkg-') as tmp:
  shutil.copy2(ROOT/'packaging/macos/launch',mac/'launch')
  shutil.copy2(ROOT/'packaging/macos/start.command',resources/'start.command')
  (mac/'launch').chmod(0o755);(resources/'start.command').chmod(0o755)
- info={'CFBundleName':'Meraki Console','CFBundleDisplayName':'Meraki Console','CFBundleIdentifier':'com.unitynetech.merakiconsole','CFBundleVersion':args.version,'CFBundleShortVersionString':args.version,'CFBundleExecutable':'launch','CFBundlePackageType':'APPL','LSMinimumSystemVersion':'12.0','NSAppleEventsUsageDescription':'Open Terminal to start the local Docker application.'}
+ shutil.copy2(ROOT/'packaging/macos/assets/MerakiConsole.icns',resources/'MerakiConsole.icns')
+ info={'CFBundleIconFile':'MerakiConsole.icns','CFBundleName':'Meraki Console','CFBundleDisplayName':'Meraki Console','CFBundleIdentifier':'com.unitynetech.merakiconsole','CFBundleVersion':args.version,'CFBundleShortVersionString':args.version,'CFBundleExecutable':'launch','CFBundlePackageType':'APPL','LSMinimumSystemVersion':'12.0','NSAppleEventsUsageDescription':'Open Terminal to start the local Docker application.'}
  (app/'Contents/Info.plist').write_bytes(plistlib.dumps(info))
  subprocess.run(['codesign','--force','--sign','-',str(app)],check=True)
  subprocess.run(['codesign','--verify','--deep','--strict',str(app)],check=True)
