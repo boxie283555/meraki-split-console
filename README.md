@@ -4,6 +4,22 @@
 
 本版本提供 Mac 双击启动入口，界面运行于本机浏览器；不是原生 Swift App。iPhone App 暂不开发。Docker 容器中不需要 systemd，不挂载宿主机 Docker socket，不修改原有服务器或路由器。
 
+## 安装入口
+
+第一次使用请按 **[Mac 完整安装指南](docs/安装指南.md)** 操作，包含Docker准备、代码下载、配置、首次登录、Mac双击入口、升级、数据备份和常见问题。
+
+已有Docker环境的快速安装：
+
+```bash
+git clone https://github.com/boxie283555/meraki-split-console.git
+cd meraki-split-console
+cp .env.example .env
+# 先编辑 .env，填写自己的 Meraki 组织 ID 和网络名称
+./scripts/start-mac.command
+```
+
+页面地址：**https://localhost:8443**；初始账号`admin`，密码获取方式见下文。没有API Key也可以先打开页面，再配置Meraki接入。
+
 ## Mac 安装
 
 安装 Docker Desktop 并启动，或使用免费的 Colima：
