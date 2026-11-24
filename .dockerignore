@@ -1,0 +1,17 @@
+.env
+config.json
+__pycache__/
+*.pyc
+.DS_Store
+._*
+.venv/
+data/
+private/
+backups/
+*.pem
+*.key
+*.tar.gz
+
+.git/
+.github/
+tests/

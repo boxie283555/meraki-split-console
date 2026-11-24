@@ -1,0 +1,6 @@
+# Optional: expose DNS on the Mac. Set BIND_IP to its trusted LAN IP.
+services:
+  console:
+    ports:
+      - "${BIND_IP:-127.0.0.1}:53:5353/udp"
+      - "${BIND_IP:-127.0.0.1}:53:5353/tcp"

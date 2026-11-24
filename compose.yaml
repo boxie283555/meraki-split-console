@@ -1,0 +1,18 @@
+services:
+  console:
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${BIND_IP:-127.0.0.1}:8443:8443"
+    environment:
+      APP_ALLOWED_HOSTS: "localhost:8443,127.0.0.1:8443,${CONSOLE_HOST:-localhost}:8443"
+      MERAKI_ORG_ID: "${MERAKI_ORG_ID:-YOUR_ORGANIZATION_ID}"
+      MERAKI_NETWORK_NAME: "${MERAKI_NETWORK_NAME:-YOUR_NETWORK_NAME}"
+      ENABLE_SCHEDULE: "${ENABLE_SCHEDULE:-1}"
+    volumes:
+      - console-data:/data
+    security_opt:
+      - no-new-privileges:true
+    cap_drop: [ALL]
+volumes:
+  console-data:

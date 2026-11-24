@@ -1,0 +1,6 @@
+{
+  "organization_id": "YOUR_ORGANIZATION_ID",
+  "network_name": "YOUR_NETWORK_NAME",
+  "api_key_file": "/data/private/api-key",
+  "state_dir": "/data/state"
+}

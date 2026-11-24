@@ -1,0 +1,4767 @@
+[
+  {
+    "path": "/devices/{serial}",
+    "operation": "getDevice",
+    "family": "devices",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDevice",
+    "put_fields": [
+      "name",
+      "tags",
+      "lat",
+      "lng",
+      "address",
+      "notes",
+      "moveMapMarker",
+      "switchProfileId",
+      "floorPlanId"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/appliance/radio/settings",
+    "operation": "getDeviceApplianceRadioSettings",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceApplianceRadioSettings",
+    "put_fields": [
+      "rfProfileId",
+      "twoFourGhzSettings",
+      "fiveGhzSettings"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/appliance/uplinks/settings",
+    "operation": "getDeviceApplianceUplinksSettings",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceApplianceUplinksSettings",
+    "put_fields": [
+      "interfaces"
+    ],
+    "put_required": [
+      "interfaces"
+    ]
+  },
+  {
+    "path": "/devices/{serial}/camera/customAnalytics",
+    "operation": "getDeviceCameraCustomAnalytics",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceCameraCustomAnalytics",
+    "put_fields": [
+      "enabled",
+      "artifactId",
+      "parameters"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/camera/qualityAndRetention",
+    "operation": "getDeviceCameraQualityAndRetention",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceCameraQualityAndRetention",
+    "put_fields": [
+      "profileId",
+      "motionBasedRetentionEnabled",
+      "audioRecordingEnabled",
+      "restrictedBandwidthModeEnabled",
+      "quality",
+      "resolution",
+      "motionDetectorVersion"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/camera/sense",
+    "operation": "getDeviceCameraSense",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceCameraSense",
+    "put_fields": [
+      "senseEnabled",
+      "mqttBrokerId",
+      "audioDetection",
+      "detectionModelId"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/camera/sense/objectDetectionModels",
+    "operation": "getDeviceCameraSenseObjectDetectionModels",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/camera/video/settings",
+    "operation": "getDeviceCameraVideoSettings",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceCameraVideoSettings",
+    "put_fields": [
+      "externalRtspEnabled"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/camera/videoLink",
+    "operation": "getDeviceCameraVideoLink",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "timestamp",
+        "in": "query",
+        "description": "[optional] The video link will start at this time. The timestamp should be a string in ISO8601 format. If no timestamp is specified, we will assume current time.",
+        "schema": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/camera/wirelessProfiles",
+    "operation": "getDeviceCameraWirelessProfiles",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceCameraWirelessProfiles",
+    "put_fields": [
+      "ids"
+    ],
+    "put_required": [
+      "ids"
+    ]
+  },
+  {
+    "path": "/devices/{serial}/cellular/sims",
+    "operation": "getDeviceCellularSims",
+    "family": "devices",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceCellularSims",
+    "put_fields": [
+      "sims",
+      "simOrdering",
+      "simFailover"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/cellularGateway/lan",
+    "operation": "getDeviceCellularGatewayLan",
+    "family": "cellularGateway",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceCellularGatewayLan",
+    "put_fields": [
+      "reservedIpRanges",
+      "fixedIpAssignments"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/cellularGateway/portForwardingRules",
+    "operation": "getDeviceCellularGatewayPortForwardingRules",
+    "family": "cellularGateway",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceCellularGatewayPortForwardingRules",
+    "put_fields": [
+      "rules"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/managementInterface",
+    "operation": "getDeviceManagementInterface",
+    "family": "devices",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceManagementInterface",
+    "put_fields": [
+      "wan1",
+      "wan2"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/sensor/commands",
+    "operation": "getDeviceSensorCommands",
+    "family": "sensor",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "operations",
+        "in": "query",
+        "description": "Optional parameter to filter commands by operation. Allowed values are disableDownstreamPower, enableDownstreamPower, cycleDownstreamPower, and refreshData.",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      {
+        "name": "perPage",
+        "in": "query",
+        "description": "The number of entries per page returned. Acceptable range is 3 - 1000. Default is 10.",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      {
+        "name": "startingAfter",
+        "in": "query",
+        "description": "A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "endingBefore",
+        "in": "query",
+        "description": "A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "sortOrder",
+        "in": "query",
+        "description": "Sorted order of entries. Order options are 'ascending' and 'descending'. Default is 'descending'.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "ascending",
+            "descending"
+          ]
+        }
+      },
+      {
+        "name": "t0",
+        "in": "query",
+        "description": "The beginning of the timespan for the data. The maximum lookback period is 30 days from today.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "t1",
+        "in": "query",
+        "description": "The end of the timespan for the data. t1 can be a maximum of 30 days after t0.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "timespan",
+        "in": "query",
+        "description": "The timespan for which the information will be fetched. If specifying timespan, do not specify parameters t0 and t1. The value must be in seconds and be less than or equal to 30 days. The default is 30 days.",
+        "schema": {
+          "type": "number",
+          "format": "float",
+          "maximum": 2592000
+        }
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/sensor/commands/{commandId}",
+    "operation": "getDeviceSensorCommand",
+    "family": "sensor",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "commandId",
+        "in": "path",
+        "description": "Command ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/sensor/relationships",
+    "operation": "getDeviceSensorRelationships",
+    "family": "sensor",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceSensorRelationships",
+    "put_fields": [
+      "livestream"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/switch/ports",
+    "operation": "getDeviceSwitchPorts",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/switch/ports/{portId}",
+    "operation": "getDeviceSwitchPort",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "portId",
+        "in": "path",
+        "description": "Port ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceSwitchPort",
+    "put_fields": [
+      "name",
+      "tags",
+      "enabled",
+      "poeEnabled",
+      "perpetualPoe",
+      "fastPoe",
+      "type",
+      "vlan",
+      "voiceVlan",
+      "allowedVlans",
+      "isolationEnabled",
+      "rstpEnabled",
+      "stpGuard",
+      "stpPortFastTrunk",
+      "linkNegotiation",
+      "portScheduleId",
+      "udld",
+      "accessPolicyType",
+      "accessPolicyNumber",
+      "macAllowList",
+      "macWhitelistLimit",
+      "stickyMacAllowList",
+      "stickyMacAllowListLimit",
+      "stormControlEnabled",
+      "adaptivePolicyGroupId",
+      "peerSgtCapable",
+      "flexibleStackingEnabled",
+      "daiTrusted",
+      "profile",
+      "dot3az",
+      "highSpeed"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/switch/routing/interfaces",
+    "operation": "getDeviceSwitchRoutingInterfaces",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "mode",
+        "in": "query",
+        "description": "Optional parameter to filter L3 interfaces by mode.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "loopback",
+            "oob_management",
+            "routed",
+            "vlan"
+          ]
+        }
+      },
+      {
+        "name": "protocol",
+        "in": "query",
+        "description": "Optional parameter to filter L3 interfaces by protocol.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "ipv4",
+            "ipv6"
+          ]
+        }
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/switch/routing/interfaces/{interfaceId}",
+    "operation": "getDeviceSwitchRoutingInterface",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "interfaceId",
+        "in": "path",
+        "description": "Interface ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceSwitchRoutingInterface",
+    "put_fields": [
+      "name",
+      "subnet",
+      "switchPortId",
+      "interfaceIp",
+      "mtu",
+      "multicastRouting",
+      "vlanId",
+      "defaultGateway",
+      "ospfSettings",
+      "ipv6",
+      "vrf",
+      "loopback",
+      "bidirectionalForwardingDetection"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/switch/routing/interfaces/{interfaceId}/dhcp",
+    "operation": "getDeviceSwitchRoutingInterfaceDhcp",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "interfaceId",
+        "in": "path",
+        "description": "Interface ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceSwitchRoutingInterfaceDhcp",
+    "put_fields": [
+      "dhcpMode",
+      "dhcpRelayServerIps",
+      "dhcpLeaseTime",
+      "dnsNameserversOption",
+      "dnsCustomNameservers",
+      "bootOptionsEnabled",
+      "bootNextServer",
+      "bootFileName",
+      "dhcpOptions",
+      "reservedIpRanges",
+      "fixedIpAssignments",
+      "dhcpDefaultRouterIps",
+      "dhcpDomainName"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/switch/routing/staticRoutes",
+    "operation": "getDeviceSwitchRoutingStaticRoutes",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/switch/routing/staticRoutes/{staticRouteId}",
+    "operation": "getDeviceSwitchRoutingStaticRoute",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "staticRouteId",
+        "in": "path",
+        "description": "Static route ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceSwitchRoutingStaticRoute",
+    "put_fields": [
+      "name",
+      "subnet",
+      "nextHopIp",
+      "managementNextHop",
+      "advertiseViaOspfEnabled",
+      "preferOverOspfRoutesEnabled",
+      "vrf"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/switch/warmSpare",
+    "operation": "getDeviceSwitchWarmSpare",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceSwitchWarmSpare",
+    "put_fields": [
+      "enabled",
+      "spareSerial"
+    ],
+    "put_required": [
+      "enabled"
+    ]
+  },
+  {
+    "path": "/devices/{serial}/wireless/bluetooth/settings",
+    "operation": "getDeviceWirelessBluetoothSettings",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceWirelessBluetoothSettings",
+    "put_fields": [
+      "uuid",
+      "major",
+      "minor"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/wireless/electronicShelfLabel",
+    "operation": "getDeviceWirelessElectronicShelfLabel",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceWirelessElectronicShelfLabel",
+    "put_fields": [
+      "channel",
+      "enabled"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/wireless/radio/overrides",
+    "operation": "getDeviceWirelessRadioOverrides",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceWirelessRadioOverrides",
+    "put_fields": [
+      "rfProfile",
+      "radios"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/wireless/radio/settings",
+    "operation": "getDeviceWirelessRadioSettings",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateDeviceWirelessRadioSettings",
+    "put_fields": [
+      "rfProfileId",
+      "twoFourGhzSettings",
+      "fiveGhzSettings"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/devices/{serial}/wireless/zigbee/enrollments/{enrollmentId}",
+    "operation": "getDeviceWirelessZigbeeEnrollment",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "serial",
+        "in": "path",
+        "description": "Serial",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "enrollmentId",
+        "in": "path",
+        "description": "Enrollment ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}",
+    "operation": "getNetwork",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetwork",
+    "put_fields": [
+      "name",
+      "timeZone",
+      "tags",
+      "enrollmentString",
+      "notes"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/alerts/settings",
+    "operation": "getNetworkAlertsSettings",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkAlertsSettings",
+    "put_fields": [
+      "defaultDestinations",
+      "alerts",
+      "muting"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/connectivityMonitoringDestinations",
+    "operation": "getNetworkApplianceConnectivityMonitoringDestinations",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceConnectivityMonitoringDestinations",
+    "put_fields": [
+      "destinations"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/contentFiltering",
+    "operation": "getNetworkApplianceContentFiltering",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceContentFiltering",
+    "put_fields": [
+      "allowedUrlPatterns",
+      "blockedUrlPatterns",
+      "blockedUrlCategories",
+      "urlCategoryListSize"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/firewall/cellularFirewallRules",
+    "operation": "getNetworkApplianceFirewallCellularFirewallRules",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceFirewallCellularFirewallRules",
+    "put_fields": [
+      "rules"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/firewall/firewalledServices",
+    "operation": "getNetworkApplianceFirewallFirewalledServices",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/firewall/firewalledServices/{service}",
+    "operation": "getNetworkApplianceFirewallFirewalledService",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "service",
+        "in": "path",
+        "description": "Service",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceFirewallFirewalledService",
+    "put_fields": [
+      "access",
+      "allowedIps"
+    ],
+    "put_required": [
+      "access"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/appliance/firewall/inboundCellularFirewallRules",
+    "operation": "getNetworkApplianceFirewallInboundCellularFirewallRules",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceFirewallInboundCellularFirewallRules",
+    "put_fields": [
+      "rules"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/firewall/inboundFirewallRules",
+    "operation": "getNetworkApplianceFirewallInboundFirewallRules",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceFirewallInboundFirewallRules",
+    "put_fields": [
+      "rules",
+      "syslogDefaultRule"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/firewall/l3FirewallRules",
+    "operation": "getNetworkApplianceFirewallL3FirewallRules",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceFirewallL3FirewallRules",
+    "put_fields": [
+      "rules",
+      "syslogDefaultRule"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/firewall/l7FirewallRules",
+    "operation": "getNetworkApplianceFirewallL7FirewallRules",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceFirewallL7FirewallRules",
+    "put_fields": [
+      "rules"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/firewall/oneToManyNatRules",
+    "operation": "getNetworkApplianceFirewallOneToManyNatRules",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceFirewallOneToManyNatRules",
+    "put_fields": [
+      "rules"
+    ],
+    "put_required": [
+      "rules"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/appliance/firewall/oneToOneNatRules",
+    "operation": "getNetworkApplianceFirewallOneToOneNatRules",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceFirewallOneToOneNatRules",
+    "put_fields": [
+      "rules"
+    ],
+    "put_required": [
+      "rules"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/appliance/firewall/portForwardingRules",
+    "operation": "getNetworkApplianceFirewallPortForwardingRules",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceFirewallPortForwardingRules",
+    "put_fields": [
+      "rules"
+    ],
+    "put_required": [
+      "rules"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/appliance/firewall/settings",
+    "operation": "getNetworkApplianceFirewallSettings",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceFirewallSettings",
+    "put_fields": [
+      "spoofingProtection"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/ports",
+    "operation": "getNetworkAppliancePorts",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/ports/{portId}",
+    "operation": "getNetworkAppliancePort",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "portId",
+        "in": "path",
+        "description": "Port ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkAppliancePort",
+    "put_fields": [
+      "enabled",
+      "dropUntaggedTraffic",
+      "type",
+      "vlan",
+      "allowedVlans",
+      "accessPolicy",
+      "sgt"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/prefixes/delegated/statics",
+    "operation": "getNetworkAppliancePrefixesDelegatedStatics",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/prefixes/delegated/statics/{staticDelegatedPrefixId}",
+    "operation": "getNetworkAppliancePrefixesDelegatedStatic",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "staticDelegatedPrefixId",
+        "in": "path",
+        "description": "Static delegated prefix ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkAppliancePrefixesDelegatedStatic",
+    "put_fields": [
+      "prefix",
+      "origin",
+      "description"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/rfProfiles",
+    "operation": "getNetworkApplianceRfProfiles",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/rfProfiles/{rfProfileId}",
+    "operation": "getNetworkApplianceRfProfile",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "rfProfileId",
+        "in": "path",
+        "description": "Rf profile ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceRfProfile",
+    "put_fields": [
+      "name",
+      "twoFourGhzSettings",
+      "fiveGhzSettings",
+      "perSsidSettings"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/security/intrusion",
+    "operation": "getNetworkApplianceSecurityIntrusion",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceSecurityIntrusion",
+    "put_fields": [
+      "mode",
+      "idsRulesets",
+      "policy",
+      "protectedNetworks"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/security/malware",
+    "operation": "getNetworkApplianceSecurityMalware",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceSecurityMalware",
+    "put_fields": [
+      "mode",
+      "allowedUrls",
+      "allowedFiles"
+    ],
+    "put_required": [
+      "mode"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/appliance/settings",
+    "operation": "getNetworkApplianceSettings",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceSettings",
+    "put_fields": [
+      "clientTrackingMethod",
+      "deploymentMode",
+      "dynamicDns"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/singleLan",
+    "operation": "getNetworkApplianceSingleLan",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceSingleLan",
+    "put_fields": [
+      "subnet",
+      "applianceIp",
+      "ipv6",
+      "mandatoryDhcp",
+      "vrf"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/ssids",
+    "operation": "getNetworkApplianceSsids",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/ssids/{number}",
+    "operation": "getNetworkApplianceSsid",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceSsid",
+    "put_fields": [
+      "name",
+      "enabled",
+      "defaultVlanId",
+      "authMode",
+      "psk",
+      "radiusServers",
+      "encryptionMode",
+      "wpaEncryptionMode",
+      "visible",
+      "dhcpEnforcedDeauthentication",
+      "dot11w"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/staticRoutes",
+    "operation": "getNetworkApplianceStaticRoutes",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/staticRoutes/{staticRouteId}",
+    "operation": "getNetworkApplianceStaticRoute",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "staticRouteId",
+        "in": "path",
+        "description": "Static route ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceStaticRoute",
+    "put_fields": [
+      "name",
+      "subnet",
+      "gatewayIp",
+      "gatewayVlanId",
+      "enabled",
+      "fixedIpAssignments",
+      "reservedIpRanges",
+      "vrf"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/trafficShaping",
+    "operation": "getNetworkApplianceTrafficShaping",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceTrafficShaping",
+    "put_fields": [
+      "globalBandwidthLimits"
+    ],
+    "put_required": [
+      "globalBandwidthLimits"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/appliance/trafficShaping/customPerformanceClasses",
+    "operation": "getNetworkApplianceTrafficShapingCustomPerformanceClasses",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/trafficShaping/customPerformanceClasses/{customPerformanceClassId}",
+    "operation": "getNetworkApplianceTrafficShapingCustomPerformanceClass",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "customPerformanceClassId",
+        "in": "path",
+        "description": "Custom performance class ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceTrafficShapingCustomPerformanceClass",
+    "put_fields": [
+      "name",
+      "maxLatency",
+      "maxJitter",
+      "maxLossPercentage"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/trafficShaping/rules",
+    "operation": "getNetworkApplianceTrafficShapingRules",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceTrafficShapingRules",
+    "put_fields": [
+      "defaultRulesEnabled",
+      "rules"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/trafficShaping/uplinkBandwidth",
+    "operation": "getNetworkApplianceTrafficShapingUplinkBandwidth",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceTrafficShapingUplinkBandwidth",
+    "put_fields": [
+      "bandwidthLimits"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/trafficShaping/uplinkSelection",
+    "operation": "getNetworkApplianceTrafficShapingUplinkSelection",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceTrafficShapingUplinkSelection",
+    "put_fields": [
+      "activeActiveAutoVpnEnabled",
+      "defaultUplink",
+      "loadBalancingEnabled",
+      "failoverAndFailback",
+      "wanTrafficUplinkPreferences",
+      "vpnTrafficUplinkPreferences"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/vlans",
+    "operation": "getNetworkApplianceVlans",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/vlans/settings",
+    "operation": "getNetworkApplianceVlansSettings",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceVlansSettings",
+    "put_fields": [
+      "vlansEnabled"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/vlans/{vlanId}",
+    "operation": "getNetworkApplianceVlan",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "vlanId",
+        "in": "path",
+        "description": "Vlan ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceVlan",
+    "put_fields": [
+      "name",
+      "subnet",
+      "applianceIp",
+      "groupPolicyId",
+      "vpnNatSubnet",
+      "dhcpHandling",
+      "dhcpRelayServerIps",
+      "dhcpLeaseTime",
+      "dhcpBootOptionsEnabled",
+      "dhcpBootNextServer",
+      "dhcpBootFilename",
+      "fixedIpAssignments",
+      "reservedIpRanges",
+      "dnsNameservers",
+      "dhcpOptions",
+      "templateVlanType",
+      "cidr",
+      "mask",
+      "ipv6",
+      "mandatoryDhcp",
+      "sgt",
+      "vrf",
+      "uplinks"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/appliance/vpn/bgp",
+    "operation": "getNetworkApplianceVpnBgp",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceVpnBgp",
+    "put_fields": [
+      "enabled",
+      "asNumber",
+      "ibgpHoldTimer",
+      "ipv6",
+      "tunnelDownTermination",
+      "localAsNumber",
+      "priorityRoute",
+      "routerId",
+      "neighbors"
+    ],
+    "put_required": [
+      "enabled"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/appliance/vpn/siteToSiteVpn",
+    "operation": "getNetworkApplianceVpnSiteToSiteVpn",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceVpnSiteToSiteVpn",
+    "put_fields": [
+      "confirmed",
+      "mode",
+      "natTraversal",
+      "hubs",
+      "subnets",
+      "sgt",
+      "subnet",
+      "hostTranslations"
+    ],
+    "put_required": [
+      "mode"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/appliance/warmSpare",
+    "operation": "getNetworkApplianceWarmSpare",
+    "family": "appliance",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkApplianceWarmSpare",
+    "put_fields": [
+      "enabled",
+      "spareSerial",
+      "uplinkMode",
+      "virtualIp1",
+      "virtualIp2"
+    ],
+    "put_required": [
+      "enabled"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/camera/qualityRetentionProfiles",
+    "operation": "getNetworkCameraQualityRetentionProfiles",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/camera/qualityRetentionProfiles/{qualityRetentionProfileId}",
+    "operation": "getNetworkCameraQualityRetentionProfile",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "qualityRetentionProfileId",
+        "in": "path",
+        "description": "Quality retention profile ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkCameraQualityRetentionProfile",
+    "put_fields": [
+      "name",
+      "motionBasedRetentionEnabled",
+      "restrictedBandwidthModeEnabled",
+      "audioRecordingEnabled",
+      "cloudArchiveEnabled",
+      "motionDetectorVersion",
+      "smartRetention",
+      "scheduleId",
+      "maxRetentionDays",
+      "videoSettings"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/camera/schedules",
+    "operation": "getNetworkCameraSchedules",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/camera/wirelessProfiles",
+    "operation": "getNetworkCameraWirelessProfiles",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/camera/wirelessProfiles/{wirelessProfileId}",
+    "operation": "getNetworkCameraWirelessProfile",
+    "family": "camera",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "wirelessProfileId",
+        "in": "path",
+        "description": "Wireless profile ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkCameraWirelessProfile",
+    "put_fields": [
+      "name",
+      "ssid",
+      "identity"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/cellularGateway/connectivityMonitoringDestinations",
+    "operation": "getNetworkCellularGatewayConnectivityMonitoringDestinations",
+    "family": "cellularGateway",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkCellularGatewayConnectivityMonitoringDestinations",
+    "put_fields": [
+      "destinations"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/cellularGateway/dhcp",
+    "operation": "getNetworkCellularGatewayDhcp",
+    "family": "cellularGateway",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkCellularGatewayDhcp",
+    "put_fields": [
+      "dhcpLeaseTime",
+      "dnsNameservers",
+      "dnsCustomNameservers"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/cellularGateway/subnetPool",
+    "operation": "getNetworkCellularGatewaySubnetPool",
+    "family": "cellularGateway",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkCellularGatewaySubnetPool",
+    "put_fields": [
+      "mask",
+      "cidr"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/cellularGateway/uplink",
+    "operation": "getNetworkCellularGatewayUplink",
+    "family": "cellularGateway",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkCellularGatewayUplink",
+    "put_fields": [
+      "bandwidthLimits"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/clients/{clientId}/policy",
+    "operation": "getNetworkClientPolicy",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "clientId",
+        "in": "path",
+        "description": "Client ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkClientPolicy",
+    "put_fields": [
+      "devicePolicy",
+      "groupPolicyId"
+    ],
+    "put_required": [
+      "devicePolicy"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/clients/{clientId}/splashAuthorizationStatus",
+    "operation": "getNetworkClientSplashAuthorizationStatus",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "clientId",
+        "in": "path",
+        "description": "Client ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkClientSplashAuthorizationStatus",
+    "put_fields": [
+      "ssids"
+    ],
+    "put_required": [
+      "ssids"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/devices",
+    "operation": "getNetworkDevices",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/firmwareUpgrades",
+    "operation": "getNetworkFirmwareUpgrades",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkFirmwareUpgrades",
+    "put_fields": [
+      "upgradeWindow",
+      "timezone",
+      "products",
+      "featureLossAcknowledgements"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/firmwareUpgrades/staged/groups",
+    "operation": "getNetworkFirmwareUpgradesStagedGroups",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/firmwareUpgrades/staged/groups/{groupId}",
+    "operation": "getNetworkFirmwareUpgradesStagedGroup",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "groupId",
+        "in": "path",
+        "description": "Group ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkFirmwareUpgradesStagedGroup",
+    "put_fields": [
+      "name",
+      "description",
+      "isDefault",
+      "assignedDevices"
+    ],
+    "put_required": [
+      "name",
+      "isDefault"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/firmwareUpgrades/staged/stages",
+    "operation": "getNetworkFirmwareUpgradesStagedStages",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkFirmwareUpgradesStagedStages",
+    "put_fields": [
+      "_json"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/floorPlans",
+    "operation": "getNetworkFloorPlans",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/floorPlans/{floorPlanId}",
+    "operation": "getNetworkFloorPlan",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "floorPlanId",
+        "in": "path",
+        "description": "Floor plan ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkFloorPlan",
+    "put_fields": [
+      "name",
+      "center",
+      "bottomLeftCorner",
+      "bottomRightCorner",
+      "topLeftCorner",
+      "topRightCorner",
+      "floorNumber",
+      "imageContents"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/groupPolicies",
+    "operation": "getNetworkGroupPolicies",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/groupPolicies/{groupPolicyId}",
+    "operation": "getNetworkGroupPolicy",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "groupPolicyId",
+        "in": "path",
+        "description": "Group policy ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkGroupPolicy",
+    "put_fields": [
+      "name",
+      "scheduling",
+      "bandwidth",
+      "firewallAndTrafficShaping",
+      "contentFiltering",
+      "splashAuthSettings",
+      "vlanTagging",
+      "bonjourForwarding"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/merakiAuthUsers",
+    "operation": "getNetworkMerakiAuthUsers",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/merakiAuthUsers/{merakiAuthUserId}",
+    "operation": "getNetworkMerakiAuthUser",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "merakiAuthUserId",
+        "in": "path",
+        "description": "Meraki auth user ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkMerakiAuthUser",
+    "put_fields": [
+      "name",
+      "password",
+      "emailPasswordToUser",
+      "authorizations"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/mqttBrokers",
+    "operation": "getNetworkMqttBrokers",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/mqttBrokers/{mqttBrokerId}",
+    "operation": "getNetworkMqttBroker",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "mqttBrokerId",
+        "in": "path",
+        "description": "Mqtt broker ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkMqttBroker",
+    "put_fields": [
+      "name",
+      "host",
+      "port",
+      "security",
+      "authentication"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/netflow",
+    "operation": "getNetworkNetflow",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkNetflow",
+    "put_fields": [
+      "reportingEnabled",
+      "collectorIp",
+      "collectorPort",
+      "etaEnabled",
+      "etaDstPort"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/sensor/alerts/profiles",
+    "operation": "getNetworkSensorAlertsProfiles",
+    "family": "sensor",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/sensor/alerts/profiles/{id}",
+    "operation": "getNetworkSensorAlertsProfile",
+    "family": "sensor",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "id",
+        "in": "path",
+        "description": "ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSensorAlertsProfile",
+    "put_fields": [
+      "name",
+      "schedule",
+      "conditions",
+      "recipients",
+      "serials",
+      "includeSensorUrl",
+      "message"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/sensor/mqttBrokers",
+    "operation": "getNetworkSensorMqttBrokers",
+    "family": "sensor",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/sensor/mqttBrokers/{mqttBrokerId}",
+    "operation": "getNetworkSensorMqttBroker",
+    "family": "sensor",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "mqttBrokerId",
+        "in": "path",
+        "description": "Mqtt broker ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSensorMqttBroker",
+    "put_fields": [
+      "enabled"
+    ],
+    "put_required": [
+      "enabled"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/sensor/relationships",
+    "operation": "getNetworkSensorRelationships",
+    "family": "sensor",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/settings",
+    "operation": "getNetworkSettings",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSettings",
+    "put_fields": [
+      "localStatusPageEnabled",
+      "remoteStatusPageEnabled",
+      "localStatusPage",
+      "securePort",
+      "namedVlans"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/snmp",
+    "operation": "getNetworkSnmp",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSnmp",
+    "put_fields": [
+      "access",
+      "communityString",
+      "users",
+      "authentication",
+      "privacy"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/accessControlLists",
+    "operation": "getNetworkSwitchAccessControlLists",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchAccessControlLists",
+    "put_fields": [
+      "rules"
+    ],
+    "put_required": [
+      "rules"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/switch/accessPolicies",
+    "operation": "getNetworkSwitchAccessPolicies",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/accessPolicies/{accessPolicyNumber}",
+    "operation": "getNetworkSwitchAccessPolicy",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "accessPolicyNumber",
+        "in": "path",
+        "description": "Access policy number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchAccessPolicy",
+    "put_fields": [
+      "name",
+      "radiusServers",
+      "radius",
+      "guestPortBouncing",
+      "radiusTestingEnabled",
+      "radiusCoaSupportEnabled",
+      "radiusAccountingEnabled",
+      "radiusAccountingServers",
+      "radiusGroupAttribute",
+      "hostMode",
+      "accessPolicyType",
+      "increaseAccessSpeed",
+      "guestVlanId",
+      "dot1x",
+      "voiceVlanClients",
+      "urlRedirectWalledGardenEnabled",
+      "urlRedirectWalledGardenRanges",
+      "guestGroupPolicyId",
+      "guestSgtId"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/alternateManagementInterface",
+    "operation": "getNetworkSwitchAlternateManagementInterface",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchAlternateManagementInterface",
+    "put_fields": [
+      "enabled",
+      "vlanId",
+      "protocols",
+      "switches"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/dhcp/v4/servers/seen",
+    "operation": "getNetworkSwitchDhcpV4ServersSeen",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "t0",
+        "in": "query",
+        "description": "The beginning of the timespan for the data. The maximum lookback period is 31 days from today.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "timespan",
+        "in": "query",
+        "description": "The timespan for which the information will be fetched. If specifying timespan, do not specify parameter t0. The value must be in seconds and be less than or equal to 31 days. The default is 1 day.",
+        "schema": {
+          "type": "number",
+          "format": "float",
+          "maximum": 2678400
+        }
+      },
+      {
+        "name": "perPage",
+        "in": "query",
+        "description": "The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      {
+        "name": "startingAfter",
+        "in": "query",
+        "description": "A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "endingBefore",
+        "in": "query",
+        "description": "A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/dhcpServerPolicy",
+    "operation": "getNetworkSwitchDhcpServerPolicy",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchDhcpServerPolicy",
+    "put_fields": [
+      "alerts",
+      "defaultPolicy",
+      "allowedServers",
+      "blockedServers",
+      "arpInspection"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/dhcpServerPolicy/arpInspection/trustedServers",
+    "operation": "getNetworkSwitchDhcpServerPolicyArpInspectionTrustedServers",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "perPage",
+        "in": "query",
+        "description": "The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      {
+        "name": "startingAfter",
+        "in": "query",
+        "description": "A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "endingBefore",
+        "in": "query",
+        "description": "A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/dhcpServerPolicy/arpInspection/warnings/byDevice",
+    "operation": "getNetworkSwitchDhcpServerPolicyArpInspectionWarningsByDevice",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "perPage",
+        "in": "query",
+        "description": "The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      {
+        "name": "startingAfter",
+        "in": "query",
+        "description": "A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "endingBefore",
+        "in": "query",
+        "description": "A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/dscpToCosMappings",
+    "operation": "getNetworkSwitchDscpToCosMappings",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchDscpToCosMappings",
+    "put_fields": [
+      "mappings"
+    ],
+    "put_required": [
+      "mappings"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/switch/linkAggregations",
+    "operation": "getNetworkSwitchLinkAggregations",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/mtu",
+    "operation": "getNetworkSwitchMtu",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchMtu",
+    "put_fields": [
+      "defaultMtuSize",
+      "overrides"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/portSchedules",
+    "operation": "getNetworkSwitchPortSchedules",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/qosRules",
+    "operation": "getNetworkSwitchQosRules",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/qosRules/order",
+    "operation": "getNetworkSwitchQosRulesOrder",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchQosRulesOrder",
+    "put_fields": [
+      "ruleIds"
+    ],
+    "put_required": [
+      "ruleIds"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/switch/qosRules/{qosRuleId}",
+    "operation": "getNetworkSwitchQosRule",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "qosRuleId",
+        "in": "path",
+        "description": "Qos rule ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchQosRule",
+    "put_fields": [
+      "vlan",
+      "protocol",
+      "srcPort",
+      "srcPortRange",
+      "dstPort",
+      "dstPortRange",
+      "dscp"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/routing/multicast",
+    "operation": "getNetworkSwitchRoutingMulticast",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchRoutingMulticast",
+    "put_fields": [
+      "defaultSettings",
+      "overrides"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/routing/multicast/rendezvousPoints",
+    "operation": "getNetworkSwitchRoutingMulticastRendezvousPoints",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/routing/multicast/rendezvousPoints/{rendezvousPointId}",
+    "operation": "getNetworkSwitchRoutingMulticastRendezvousPoint",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "rendezvousPointId",
+        "in": "path",
+        "description": "Rendezvous point ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchRoutingMulticastRendezvousPoint",
+    "put_fields": [
+      "interfaceIp",
+      "multicastGroup",
+      "vrf"
+    ],
+    "put_required": [
+      "interfaceIp",
+      "multicastGroup"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/switch/routing/ospf",
+    "operation": "getNetworkSwitchRoutingOspf",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "vrf",
+        "in": "query",
+        "description": "The VRF to return the OSPF routing configuration for. When not provided, the default VRF is used. Included on networks with IOS XE 17.18 or higher",
+        "schema": {
+          "type": "string"
+        }
+      }
+    ],
+    "restore_put": "updateNetworkSwitchRoutingOspf",
+    "put_fields": [
+      "enabled",
+      "helloTimerInSeconds",
+      "deadTimerInSeconds",
+      "areas",
+      "v3",
+      "md5AuthenticationEnabled",
+      "md5AuthenticationKey"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/settings",
+    "operation": "getNetworkSwitchSettings",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchSettings",
+    "put_fields": [
+      "vlan",
+      "useCombinedPower",
+      "powerExceptions",
+      "uplinkClientSampling",
+      "macBlocklist",
+      "clientTracking",
+      "portChannelFallback",
+      "uplinkSelection"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/stacks",
+    "operation": "getNetworkSwitchStacks",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/stacks/{switchStackId}",
+    "operation": "getNetworkSwitchStack",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "switchStackId",
+        "in": "path",
+        "description": "Switch stack ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchStack",
+    "put_fields": [
+      "name",
+      "members"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/stacks/{switchStackId}/routing/interfaces",
+    "operation": "getNetworkSwitchStackRoutingInterfaces",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "switchStackId",
+        "in": "path",
+        "description": "Switch stack ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "mode",
+        "in": "query",
+        "description": "Optional parameter to filter L3 interfaces by mode.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "loopback",
+            "oob_management",
+            "routed",
+            "vlan"
+          ]
+        }
+      },
+      {
+        "name": "protocol",
+        "in": "query",
+        "description": "Optional parameter to filter L3 interfaces by protocol.",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "ipv4",
+            "ipv6"
+          ]
+        }
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/stacks/{switchStackId}/routing/interfaces/{interfaceId}",
+    "operation": "getNetworkSwitchStackRoutingInterface",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "switchStackId",
+        "in": "path",
+        "description": "Switch stack ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "interfaceId",
+        "in": "path",
+        "description": "Interface ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchStackRoutingInterface",
+    "put_fields": [
+      "name",
+      "subnet",
+      "switchPortId",
+      "interfaceIp",
+      "mtu",
+      "multicastRouting",
+      "vlanId",
+      "defaultGateway",
+      "ospfSettings",
+      "ipv6",
+      "vrf",
+      "loopback",
+      "bidirectionalForwardingDetection"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/stacks/{switchStackId}/routing/interfaces/{interfaceId}/dhcp",
+    "operation": "getNetworkSwitchStackRoutingInterfaceDhcp",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "switchStackId",
+        "in": "path",
+        "description": "Switch stack ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "interfaceId",
+        "in": "path",
+        "description": "Interface ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchStackRoutingInterfaceDhcp",
+    "put_fields": [
+      "dhcpMode",
+      "dhcpRelayServerIps",
+      "dhcpLeaseTime",
+      "dnsNameserversOption",
+      "dnsCustomNameservers",
+      "bootOptionsEnabled",
+      "bootNextServer",
+      "bootFileName",
+      "dhcpOptions",
+      "reservedIpRanges",
+      "fixedIpAssignments",
+      "dhcpDefaultRouterIps",
+      "dhcpDomainName"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/stacks/{switchStackId}/routing/staticRoutes",
+    "operation": "getNetworkSwitchStackRoutingStaticRoutes",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "switchStackId",
+        "in": "path",
+        "description": "Switch stack ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/stacks/{switchStackId}/routing/staticRoutes/{staticRouteId}",
+    "operation": "getNetworkSwitchStackRoutingStaticRoute",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "switchStackId",
+        "in": "path",
+        "description": "Switch stack ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "staticRouteId",
+        "in": "path",
+        "description": "Static route ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchStackRoutingStaticRoute",
+    "put_fields": [
+      "name",
+      "subnet",
+      "nextHopIp",
+      "managementNextHop",
+      "advertiseViaOspfEnabled",
+      "preferOverOspfRoutesEnabled",
+      "vrf"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/stormControl",
+    "operation": "getNetworkSwitchStormControl",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchStormControl",
+    "put_fields": [
+      "broadcastThreshold",
+      "multicastThreshold",
+      "unknownUnicastThreshold",
+      "treatTheseTrafficTypesAsOneThreshold"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/switch/stp",
+    "operation": "getNetworkSwitchStp",
+    "family": "switch",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSwitchStp",
+    "put_fields": [
+      "rstpEnabled",
+      "stpBridgePriority"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/syslogServers",
+    "operation": "getNetworkSyslogServers",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkSyslogServers",
+    "put_fields": [
+      "servers"
+    ],
+    "put_required": [
+      "servers"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/trafficAnalysis",
+    "operation": "getNetworkTrafficAnalysis",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkTrafficAnalysis",
+    "put_fields": [
+      "mode",
+      "customPieChartItems"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/vlanProfiles",
+    "operation": "getNetworkVlanProfiles",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/vlanProfiles/assignments/byDevice",
+    "operation": "getNetworkVlanProfilesAssignmentsByDevice",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "perPage",
+        "in": "query",
+        "description": "The number of entries per page returned. Acceptable range is 3 - 1000. Default is 1000.",
+        "schema": {
+          "type": "integer"
+        }
+      },
+      {
+        "name": "startingAfter",
+        "in": "query",
+        "description": "A token used by the server to indicate the start of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "endingBefore",
+        "in": "query",
+        "description": "A token used by the server to indicate the end of the page. Often this is a timestamp or an ID but it is not limited to those. This parameter should not be defined by client applications. The link for the first, last, prev, or next page in the HTTP Link header should define it.",
+        "schema": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "serials",
+        "in": "query",
+        "description": "Optional parameter to filter devices by serials. All devices returned belong to serial numbers that are an exact match.",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      {
+        "name": "productTypes",
+        "in": "query",
+        "description": "Optional parameter to filter devices by product types.",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "switch",
+              "wireless"
+            ]
+          }
+        }
+      },
+      {
+        "name": "stackIds",
+        "in": "query",
+        "description": "Optional parameter to filter devices by Switch Stack ids.",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/vlanProfiles/{iname}",
+    "operation": "getNetworkVlanProfile",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "iname",
+        "in": "path",
+        "description": "Iname",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkVlanProfile",
+    "put_fields": [
+      "name",
+      "activeVlans",
+      "vlanNames",
+      "vlanGroups"
+    ],
+    "put_required": [
+      "name",
+      "vlanNames",
+      "vlanGroups"
+    ]
+  },
+  {
+    "path": "/networks/{networkId}/webhooks/httpServers",
+    "operation": "getNetworkWebhooksHttpServers",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/webhooks/httpServers/{httpServerId}",
+    "operation": "getNetworkWebhooksHttpServer",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "httpServerId",
+        "in": "path",
+        "description": "Http server ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWebhooksHttpServer",
+    "put_fields": [
+      "name",
+      "sharedSecret",
+      "payloadTemplate"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/webhooks/payloadTemplates",
+    "operation": "getNetworkWebhooksPayloadTemplates",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/webhooks/payloadTemplates/{payloadTemplateId}",
+    "operation": "getNetworkWebhooksPayloadTemplate",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "payloadTemplateId",
+        "in": "path",
+        "description": "Payload template ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWebhooksPayloadTemplate",
+    "put_fields": [
+      "name",
+      "body",
+      "headers",
+      "bodyFile",
+      "headersFile"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/webhooks/webhookTests/{webhookTestId}",
+    "operation": "getNetworkWebhooksWebhookTest",
+    "family": "networks",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "webhookTestId",
+        "in": "path",
+        "description": "Webhook test ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/alternateManagementInterface",
+    "operation": "getNetworkWirelessAlternateManagementInterface",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessAlternateManagementInterface",
+    "put_fields": [
+      "enabled",
+      "vlanId",
+      "protocols",
+      "accessPoints"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/billing",
+    "operation": "getNetworkWirelessBilling",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessBilling",
+    "put_fields": [
+      "currency",
+      "plans"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/bluetooth/settings",
+    "operation": "getNetworkWirelessBluetoothSettings",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessBluetoothSettings",
+    "put_fields": [
+      "scanningEnabled",
+      "advertisingEnabled",
+      "uuid",
+      "majorMinorAssignmentMode",
+      "major",
+      "minor"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/electronicShelfLabel",
+    "operation": "getNetworkWirelessElectronicShelfLabel",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessElectronicShelfLabel",
+    "put_fields": [
+      "hostname",
+      "enabled",
+      "mode"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/electronicShelfLabel/configuredDevices",
+    "operation": "getNetworkWirelessElectronicShelfLabelConfiguredDevices",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ethernet/ports/profiles",
+    "operation": "getNetworkWirelessEthernetPortsProfiles",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ethernet/ports/profiles/{profileId}",
+    "operation": "getNetworkWirelessEthernetPortsProfile",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "profileId",
+        "in": "path",
+        "description": "Profile ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessEthernetPortsProfile",
+    "put_fields": [
+      "name",
+      "ports",
+      "usbPorts"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/rfProfiles",
+    "operation": "getNetworkWirelessRfProfiles",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "includeTemplateProfiles",
+        "in": "query",
+        "description": "If the network is bound to a template, this parameter controls whether or not the non-basic RF profiles defined on the template should be included in the response alongside the non-basic profiles defined on the bound network. Defaults to false.",
+        "schema": {
+          "type": "boolean"
+        }
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/rfProfiles/{rfProfileId}",
+    "operation": "getNetworkWirelessRfProfile",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "rfProfileId",
+        "in": "path",
+        "description": "Rf profile ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessRfProfile",
+    "put_fields": [
+      "name",
+      "isIndoorDefault",
+      "isOutdoorDefault",
+      "clientBalancingEnabled",
+      "minBitrateType",
+      "bandSelectionType",
+      "apBandSettings",
+      "twoFourGhzSettings",
+      "fiveGhzSettings",
+      "sixGhzSettings",
+      "transmission",
+      "perSsidSettings",
+      "flexRadios",
+      "dot11be"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/settings",
+    "operation": "getNetworkWirelessSettings",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSettings",
+    "put_fields": [
+      "meshingEnabled",
+      "ipv6BridgeEnabled",
+      "locationAnalyticsEnabled",
+      "upgradeStrategy",
+      "upgrade",
+      "ledLightsOn",
+      "multicastToUnicastConversion",
+      "namedVlans"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids",
+    "operation": "getNetworkWirelessSsids",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}",
+    "operation": "getNetworkWirelessSsid",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsid",
+    "put_fields": [
+      "name",
+      "enabled",
+      "authMode",
+      "enterpriseAdminAccess",
+      "ssidAdminAccessible",
+      "encryptionMode",
+      "psk",
+      "wpaEncryptionMode",
+      "dot11w",
+      "dot11r",
+      "dot11k",
+      "splashPage",
+      "splashGuestSponsorDomains",
+      "oauth",
+      "localRadius",
+      "ldap",
+      "activeDirectory",
+      "radiusServers",
+      "radiusProxyEnabled",
+      "radiusTestingEnabled",
+      "radiusCalledStationId",
+      "radiusAuthenticationNasId",
+      "radiusServerTimeout",
+      "radiusServerAttemptsLimit",
+      "radiusFallbackEnabled",
+      "radiusRadsec",
+      "radiusCoaEnabled",
+      "radiusFailoverPolicy",
+      "radiusLoadBalancingPolicy",
+      "radiusAccountingEnabled",
+      "radiusAccountingServers",
+      "radiusAccountingInterimInterval",
+      "radiusAttributeForGroupPolicies",
+      "ipAssignmentMode",
+      "campusGateway",
+      "useVlanTagging",
+      "concentratorNetworkId",
+      "secondaryConcentratorNetworkId",
+      "disassociateClientsOnVpnFailover",
+      "vlanId",
+      "defaultVlanId",
+      "apTagsAndVlanIds",
+      "walledGardenEnabled",
+      "walledGardenRanges",
+      "gre",
+      "radiusOverride",
+      "radiusGuestVlanEnabled",
+      "radiusGuestVlanId",
+      "minBitrate",
+      "bandSelection",
+      "perClientBandwidthLimitUp",
+      "perClientBandwidthLimitDown",
+      "perSsidBandwidthLimitUp",
+      "perSsidBandwidthLimitDown",
+      "lanIsolationEnabled",
+      "visible",
+      "availableOnAllAps",
+      "availabilityTags",
+      "adaptivePolicyGroupId",
+      "mandatoryDhcpEnabled",
+      "adultContentFilteringEnabled",
+      "dnsRewrite",
+      "speedBurst",
+      "namedVlans",
+      "security",
+      "localAuthFallback",
+      "radiusAccountingStartDelay"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/bonjourForwarding",
+    "operation": "getNetworkWirelessSsidBonjourForwarding",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidBonjourForwarding",
+    "put_fields": [
+      "enabled",
+      "rules",
+      "exception"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/deviceTypeGroupPolicies",
+    "operation": "getNetworkWirelessSsidDeviceTypeGroupPolicies",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidDeviceTypeGroupPolicies",
+    "put_fields": [
+      "enabled",
+      "deviceTypePolicies"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/eapOverride",
+    "operation": "getNetworkWirelessSsidEapOverride",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidEapOverride",
+    "put_fields": [
+      "timeout",
+      "identity",
+      "maxRetries",
+      "eapolKey"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/firewall/l3FirewallRules",
+    "operation": "getNetworkWirelessSsidFirewallL3FirewallRules",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidFirewallL3FirewallRules",
+    "put_fields": [
+      "rules",
+      "allowLanAccess"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/firewall/l7FirewallRules",
+    "operation": "getNetworkWirelessSsidFirewallL7FirewallRules",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidFirewallL7FirewallRules",
+    "put_fields": [
+      "rules"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/hotspot20",
+    "operation": "getNetworkWirelessSsidHotspot20",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidHotspot20",
+    "put_fields": [
+      "enabled",
+      "operator",
+      "venue",
+      "networkAccessType",
+      "domains",
+      "roamConsortOis",
+      "mccMncs",
+      "naiRealms"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/identityPsks",
+    "operation": "getNetworkWirelessSsidIdentityPsks",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": null,
+    "put_fields": [],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/identityPsks/{identityPskId}",
+    "operation": "getNetworkWirelessSsidIdentityPsk",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "identityPskId",
+        "in": "path",
+        "description": "Identity psk ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidIdentityPsk",
+    "put_fields": [
+      "name",
+      "passphrase",
+      "groupPolicyId",
+      "expiresAt"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/overrides",
+    "operation": "getNetworkWirelessSsidOverrides",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidOverrides",
+    "put_fields": [
+      "ccxNameIeEnabled"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/schedules",
+    "operation": "getNetworkWirelessSsidSchedules",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidSchedules",
+    "put_fields": [
+      "enabled",
+      "ranges",
+      "rangesInSeconds"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/splash/settings",
+    "operation": "getNetworkWirelessSsidSplashSettings",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidSplashSettings",
+    "put_fields": [
+      "splashUrl",
+      "useSplashUrl",
+      "splashTimeout",
+      "redirectUrl",
+      "useRedirectUrl",
+      "welcomeMessage",
+      "userConsent",
+      "themeId",
+      "splashLogo",
+      "splashImage",
+      "splashPrepaidFront",
+      "blockAllTrafficBeforeSignOn",
+      "controllerDisconnectionBehavior",
+      "allowSimultaneousLogins",
+      "guestSponsorship",
+      "billing",
+      "sentryEnrollment",
+      "selfRegistration"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/trafficShaping/rules",
+    "operation": "getNetworkWirelessSsidTrafficShapingRules",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidTrafficShapingRules",
+    "put_fields": [
+      "trafficShapingEnabled",
+      "defaultRulesEnabled",
+      "rules"
+    ],
+    "put_required": []
+  },
+  {
+    "path": "/networks/{networkId}/wireless/ssids/{number}/vpn",
+    "operation": "getNetworkWirelessSsidVpn",
+    "family": "wireless",
+    "parameters": [
+      {
+        "name": "networkId",
+        "in": "path",
+        "description": "Network ID",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      },
+      {
+        "name": "number",
+        "in": "path",
+        "description": "Number",
+        "schema": {
+          "type": "string"
+        },
+        "required": true
+      }
+    ],
+    "restore_put": "updateNetworkWirelessSsidVpn",
+    "put_fields": [
+      "concentrator",
+      "splitTunnel",
+      "failover"
+    ],
+    "put_required": []
+  }
+]
