@@ -48,4 +48,3 @@ async function loadDomains(){const q=$('dnsSearch').value;const r=await api('/ap
 $('dnsSearch').oninput=()=>{clearTimeout(dnsSearchDelay);dnsPage=0;dnsSearchDelay=setTimeout(()=>loadDomains().catch(e=>toast(e.message)),250)};$('dnsPrev').onclick=()=>{dnsPage--;loadDomains().catch(e=>toast(e.message))};$('dnsNext').onclick=()=>{dnsPage++;loadDomains().catch(e=>toast(e.message))};
 $('dnsUpdate').onclick=async()=>{try{$('dnsUpdate').disabled=true;const r=await api('/api/dns-update',{});toast(r.message);setTimeout(()=>load().catch(e=>toast(e.message)),1200)}catch(e){toast(e.message);$('dnsUpdate').disabled=false}};
 $('dnsCustomForm').onsubmit=async e=>{e.preventDefault();try{$('dnsSave').disabled=true;const r=await api('/api/dns-custom',{domains:$('dnsCustom').value});toast(r.message);setTimeout(()=>load().catch(e=>toast(e.message)),1200)}catch(e){toast(e.message);$('dnsSave').disabled=false}};
-
