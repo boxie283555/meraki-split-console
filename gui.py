@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 import secrets
 import ssl
+import socket
 import subprocess
 import threading
 import time
@@ -352,6 +353,30 @@ class Handler(BaseHTTPRequestHandler):
         return self.reply(202, {'ok': True, 'message': '已启动地址库下载和差异预览，不会自动下发到 Meraki。'})
 
 
+class ConsoleHTTPServer(ThreadingHTTPServer):
+    """Keep slow TLS handshakes out of the accept loop."""
+    daemon_threads = True
+    request_queue_size = 64
+    tls_context = None
+    handshake_timeout = 10
+
+    def process_request_thread(self, request, client_address):
+        try:
+            request.settimeout(self.handshake_timeout)
+            if self.tls_context is not None:
+                request = self.tls_context.wrap_socket(
+                    request, server_side=True, do_handshake_on_connect=False)
+                request.do_handshake()
+            request.settimeout(30)
+            self.finish_request(request, client_address)
+        except (TimeoutError, socket.timeout, ConnectionError, ssl.SSLError):
+            pass
+        except Exception:
+            self.handle_error(request, client_address)
+        finally:
+            self.shutdown_request(request)
+
+
 def main():
     os.umask(0o077)
     parser = argparse.ArgumentParser()
@@ -362,7 +387,7 @@ def main():
     if args.local_http and args.host != '127.0.0.1':
         raise SystemExit('Plain HTTP is restricted to loopback')
     init_auth()
-    server = ThreadingHTTPServer((args.host, args.port), Handler)
+    server = ConsoleHTTPServer((args.host, args.port), Handler)
     server.daemon_threads = True
     server.secure = not args.local_http
     server.allowed_hosts = set(os.environ.get('APP_ALLOWED_HOSTS', f'{args.host}:{args.port}').split(','))
@@ -372,7 +397,7 @@ def main():
         ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
         ctx.minimum_version = ssl.TLSVersion.TLSv1_2
         ctx.load_cert_chain(PRIVATE / 'gui-cert.pem', PRIVATE / 'gui-key.pem')
-        server.socket = ctx.wrap_socket(server.socket, server_side=True)
+        server.tls_context = ctx
     from runtime import jobs
     jobs.start_scheduler()
     server.serve_forever()

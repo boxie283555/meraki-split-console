@@ -3,7 +3,7 @@
 import argparse,hashlib,plistlib,shutil,subprocess,tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-p=argparse.ArgumentParser();p.add_argument('--version',default='1.1.1');args=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('--version',default='1.1.2');args=p.parse_args()
 if not all(c.isdigit() or c=='.' for c in args.version):p.error('Version must be numeric dotted format')
 out=ROOT/'dist';out.mkdir(exist_ok=True)
 with tempfile.TemporaryDirectory(prefix='meraki-pkg-') as tmp:
